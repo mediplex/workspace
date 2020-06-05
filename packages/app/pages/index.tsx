@@ -1,8 +1,17 @@
 import Head from 'next/head'
-import { NextPage } from 'next'
-import { useTheme, Button } from '@material-ui/core'
+import { NextPage, GetServerSideProps } from 'next'
+import { useTheme } from '@material-ui/core'
 
-export const Index: NextPage = (): JSX.Element => {
+import {
+  Page as OfferPage,
+  Data as OfferPageData
+} from '../src/offer-page'
+
+type IndexProps = {
+  data: OfferPageData
+}
+
+const Index: NextPage<IndexProps> = ({ data }): JSX.Element => {
   const theme = useTheme();
 
   return (
@@ -10,10 +19,22 @@ export const Index: NextPage = (): JSX.Element => {
       <Head>
         <meta name="theme-color" content={theme.palette.primary.main} />
       </Head>
-      <Button variant='contained'>Click Me!</Button>
+      <OfferPage data={data} />
     </>
 
   )
 }
 
+const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
+  const data: OfferPageData = await import('../src/offer-page/sampleData')
+    .then(({ data }) => data)
+
+  return {
+    props: {
+      data
+    }
+  }
+}
+
+export { getServerSideProps }
 export default Index
