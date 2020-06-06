@@ -62,8 +62,13 @@ type Header = {
   buyButton: BuyButton
 }
 
-export interface Data {
-  topBarAnnouncement: string
+type TopBar = {
+  visible: boolean,
+  content: string
+}
+
+export interface State {
+  topBar: TopBar
   announcement: string
   header: Header
   description: string

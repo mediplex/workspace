@@ -1,6 +1,6 @@
-import { Data } from './models'
+import { State } from './State'
 
-const data: Data = {
+const data: State = {
   announcement:
     'Due To The Popularity Of Our Free Awesome Thing, It May Sell Out As Of TODAY. We Have A Limited Supply The Thing IN STOCK An Ready To Ship Within The Next 24 Hours.',
   description: 'some description',
@@ -49,7 +49,10 @@ const data: Data = {
       },
     ],
   },
-  topBarAnnouncement: '🌐 Worldwide Free Shipping',
+  topBar: {
+    visible: true,
+    content: '🌐 Worldwide Free Shipping',
+  },
   reviews: null,
   meta: {
     metaTags: [

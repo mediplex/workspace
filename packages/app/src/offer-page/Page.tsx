@@ -1,20 +1,19 @@
-import { FC } from "react";
-import { Data } from './models'
-import { PageContextProvider } from './PageContext';
-import { Header } from "./components";
-import { TopBarAnnouncement } from "./components/TopBarAnnoucement";
+import { FC } from 'react'
+import { State } from './State'
+import { PageContextProvider } from './PageContext'
+import { Header } from './components'
+import { TopBar } from './components/TopBar'
 
 type PageProps = {
-    data: Data
+  data: State
 }
 
-
 const Page: FC<PageProps> = ({ data }) => {
-
-    return <PageContextProvider data={data}>
-        <TopBarAnnouncement />
-        <Header />
+  return (
+    <PageContextProvider data={data}>
+      <TopBar />
+      <Header />
     </PageContextProvider>
-
+  )
 }
 export { Page }

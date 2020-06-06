@@ -4,7 +4,7 @@ import { useTheme } from '@material-ui/core'
 
 import {
   Page as OfferPage,
-  Data as OfferPageData
+  State as OfferPageData
 } from '../src/offer-page'
 
 type IndexProps = {

@@ -43,4 +43,4 @@ const TopBar = () => {
   )
 }
 
-export { TopBar as TopBarAnnouncement }
+export { TopBar }
