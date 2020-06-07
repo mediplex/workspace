@@ -49,9 +49,7 @@ const TopBar = () => {
       </AppBar>
       <Toolbar variant="dense" />
     </>
-  ) : (
-    <></>
-  )
+  ) : null
 }
 
 export { TopBar }

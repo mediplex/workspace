@@ -36,12 +36,12 @@ const Announcement = () => {
   const classes = useStyles()
 
   const {
-    state: {
-      announcement: { content, title },
-    },
+    state: { announcement },
   } = useContext(PageContext)
 
-  return (
+  const { title, content } = announcement
+
+  return announcement ? (
     <Container maxWidth="xs" className={classes.container}>
       <div className={classes.root}>
         <Typography align="center" gutterBottom>
@@ -52,7 +52,7 @@ const Announcement = () => {
         <Typography align="center">{content}</Typography>
       </div>
     </Container>
-  )
+  ) : null
 }
 
 export { Announcement }

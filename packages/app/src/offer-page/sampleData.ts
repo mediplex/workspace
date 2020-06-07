@@ -6,7 +6,11 @@ const data: State = {
     content: '40% discount until stocks last',
   },
   description: 'some description',
-  header: {
+  productView: {
+    stock: {
+      min: 13,
+      max: 26,
+    },
     buyButton: {
       content: 'Buy Now',
     },
@@ -26,7 +30,7 @@ const data: State = {
       max: 68,
     },
     reviewsSummary: 9367,
-    scarecity: 'Only 18 left in stock - order soon.',
+
     shortDescription:
       'Write a brief description of why this thing is awesome in the facilities tow Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet , consectetur.',
     variants: [

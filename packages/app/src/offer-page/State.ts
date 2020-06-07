@@ -48,15 +48,20 @@ type MetaTag = {
   content: string
 }
 
-type Header = {
+type Stock = {
+  min: number
+  max: number
+}
+
+type ProductView = {
   gallery: Image[]
   name: string
   ratingSummary: number
   reviewsSummary: number
-  pricing: Pricing
-  scarecity: string
+  stock: Stock
   realTimevisitorRange: VisitorRange
   countdown: Countdown
+  pricing: Pricing
   shortDescription: string
   variants: Variant[]
   buyButton: BuyButton
@@ -75,7 +80,7 @@ type Announcement = {
 export interface State {
   topBar: TopBar
   announcement: Announcement
-  header: Header
+  productView: ProductView
   description: string
   reviews: Review[]
   meta: {
