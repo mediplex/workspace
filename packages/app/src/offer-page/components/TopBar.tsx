@@ -12,8 +12,12 @@ import { PageContext } from '../PageContext'
 
 const useStyles = makeStyles(() =>
   createStyles({
-    spacer: {
+    content: {
       flexGrow: 1,
+    },
+    icon: {
+      position: 'absolute',
+      right: 0,
     },
   })
 )
@@ -29,17 +33,21 @@ const TopBar = () => {
 
   return visible ? (
     <>
-      <AppBar color="secondary">
-        <Toolbar variant="dense" disableGutters>
-          <Typography className={classes.spacer} align="center">
+      <AppBar color="primary">
+        <Toolbar variant="dense">
+          <Typography className={classes.content} align="center">
             {content}
           </Typography>
-          <IconButton color="inherit" onClick={setTopBarVisibility}>
+          <IconButton
+            className={classes.icon}
+            color="inherit"
+            onClick={setTopBarVisibility}
+          >
             <Close fontSize="small" />
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Toolbar />
+      <Toolbar variant="dense" />
     </>
   ) : (
     <></>

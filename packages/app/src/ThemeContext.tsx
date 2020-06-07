@@ -11,12 +11,6 @@ import {
 import { blue, pink } from '@material-ui/core/colors'
 
 const initialCustomThemeOptions: ThemeOptions = {
-  palette: {
-    type: 'light',
-  },
-  shape: {
-    borderRadius: 4 * 7,
-  },
   typography: {
     h1: {
       fontSize: '3rem',
@@ -41,10 +35,9 @@ const initialCustomThemeOptions: ThemeOptions = {
 
 const ThemeContext = createContext<{
   isDarkModeEnabled: boolean
-  toogleDarkMode: () => void
+  toogleDarkMode?: () => void
 }>({
   isDarkModeEnabled: false,
-  toogleDarkMode: () => {},
 })
 
 const ThemeContextProvider = ({ children }: { children: ReactNode }) => {

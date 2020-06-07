@@ -1,8 +1,10 @@
 import { State } from './State'
 
 const data: State = {
-  announcement:
-    'Due To The Popularity Of Our Free Awesome Thing, It May Sell Out As Of TODAY. We Have A Limited Supply The Thing IN STOCK An Ready To Ship Within The Next 24 Hours.',
+  announcement: {
+    title: 'FLASH SALE',
+    content: '40% discount until stocks last',
+  },
   description: 'some description',
   header: {
     buyButton: {

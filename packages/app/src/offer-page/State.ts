@@ -67,9 +67,14 @@ type TopBar = {
   content: string
 }
 
+type Announcement = {
+  title: string
+  content: string
+}
+
 export interface State {
   topBar: TopBar
-  announcement: string
+  announcement: Announcement
   header: Header
   description: string
   reviews: Review[]

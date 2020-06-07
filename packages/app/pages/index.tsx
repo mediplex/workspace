@@ -22,9 +22,9 @@ const Index: NextPage<IndexProps> = ({ data }): JSX.Element => {
 }
 
 const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
-  const data: OfferPageData = await import('../src/offer-page/sampleData').then(
-    ({ data }) => data
-  )
+  const data: OfferPageData = await import(
+    '../src/offer-page/sampleData'
+  ).then(({ data }) => ({ ...data }))
 
   return {
     props: {
