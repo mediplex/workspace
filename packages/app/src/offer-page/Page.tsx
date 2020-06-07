@@ -1,8 +1,7 @@
 import { FC } from 'react'
 import { State } from './State'
 import { PageContextProvider } from './PageContext'
-import { Header } from './components'
-import { TopBar } from './components/TopBar'
+import { TopBar, Announcement } from './components'
 
 type PageProps = {
   data: State
@@ -12,7 +11,8 @@ const Page: FC<PageProps> = ({ data }) => {
   return (
     <PageContextProvider data={data}>
       <TopBar />
-      <Header />
+
+      <Announcement />
     </PageContextProvider>
   )
 }

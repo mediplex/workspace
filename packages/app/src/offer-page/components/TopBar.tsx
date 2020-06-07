@@ -28,16 +28,19 @@ const TopBar = () => {
   const classes = useStyles()
 
   return visible ? (
-    <AppBar color="secondary">
-      <Toolbar variant="dense">
-        <Typography className={classes.spacer} align="center">
-          {content}
-        </Typography>
-        <IconButton color="inherit" onClick={setTopBarVisibility}>
-          <Close />
-        </IconButton>
-      </Toolbar>
-    </AppBar>
+    <>
+      <AppBar color="secondary">
+        <Toolbar variant="dense" disableGutters>
+          <Typography className={classes.spacer} align="center">
+            {content}
+          </Typography>
+          <IconButton color="inherit" onClick={setTopBarVisibility}>
+            <Close fontSize="small" />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+    </>
   ) : (
     <></>
   )
