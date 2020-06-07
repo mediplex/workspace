@@ -2,17 +2,14 @@ import Head from 'next/head'
 import { NextPage, GetServerSideProps } from 'next'
 import { useTheme } from '@material-ui/core'
 
-import {
-  Page as OfferPage,
-  State as OfferPageData
-} from '../src/offer-page'
+import { Page as OfferPage, State as OfferPageData } from '../src/offer-page'
 
 type IndexProps = {
   data: OfferPageData
 }
 
 const Index: NextPage<IndexProps> = ({ data }): JSX.Element => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <>
@@ -21,18 +18,18 @@ const Index: NextPage<IndexProps> = ({ data }): JSX.Element => {
       </Head>
       <OfferPage data={data} />
     </>
-
   )
 }
 
 const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
-  const data: OfferPageData = await import('../src/offer-page/sampleData')
-    .then(({ data }) => data)
+  const data: OfferPageData = await import('../src/offer-page/sampleData').then(
+    ({ data }) => data
+  )
 
   return {
     props: {
-      data
-    }
+      data,
+    },
   }
 }
 

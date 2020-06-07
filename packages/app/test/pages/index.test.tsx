@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '../testUtils'
-import { Home } from '../../pages/index'
+// import { Home } from '../../pages/index'
 
 describe('Home page', () => {
   it('matches snapshot', () => {
@@ -15,3 +15,4 @@ describe('Home page', () => {
     expect(window.alert).toHaveBeenCalledWith('With typescript and Jest')
   })
 })
+// [x] hello world 😊

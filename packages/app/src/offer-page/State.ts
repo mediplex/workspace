@@ -63,7 +63,7 @@ type Header = {
 }
 
 type TopBar = {
-  visible: boolean,
+  visible: boolean
   content: string
 }
 

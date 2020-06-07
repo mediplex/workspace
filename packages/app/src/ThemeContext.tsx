@@ -1,5 +1,5 @@
-import React from 'react';
-import { createContext, useState, ReactNode, useMemo} from 'react';
+import React from 'react'
+import { createContext, useState, ReactNode, useMemo } from 'react'
 import {
   Theme,
   responsiveFontSizes,
@@ -7,8 +7,8 @@ import {
   ThemeProvider,
   CssBaseline,
   ThemeOptions,
-} from '@material-ui/core';
-import { blue, pink } from '@material-ui/core/colors';
+} from '@material-ui/core'
+import { blue, pink } from '@material-ui/core/colors'
 
 const initialCustomThemeOptions: ThemeOptions = {
   palette: {
@@ -37,20 +37,20 @@ const initialCustomThemeOptions: ThemeOptions = {
       fontSize: '0.75rem',
     },
   },
-};
+}
 
 const ThemeContext = createContext<{
-  isDarkModeEnabled: boolean;
-  toogleDarkMode: () => void;
+  isDarkModeEnabled: boolean
+  toogleDarkMode: () => void
 }>({
   isDarkModeEnabled: false,
   toogleDarkMode: () => {},
-});
+})
 
 const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
   const [customThemeOptions, setCustomThemeOption] = useState<ThemeOptions>(
     initialCustomThemeOptions
-  );
+  )
 
   const toogleDarkMode = () =>
     setCustomThemeOption({
@@ -59,7 +59,7 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
         ...customThemeOptions.palette,
         type: customThemeOptions.palette?.type === 'light' ? 'dark' : 'light',
       },
-    });
+    })
 
   const customTheme: Theme = useMemo(() => {
     return responsiveFontSizes(
@@ -81,8 +81,8 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
           },
         },
       })
-    );
-  }, [customThemeOptions]);
+    )
+  }, [customThemeOptions])
 
   return (
     <ThemeContext.Provider
@@ -96,7 +96,7 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
         {children}
       </ThemeProvider>
     </ThemeContext.Provider>
-  );
-};
+  )
+}
 
-export { ThemeContextProvider, ThemeContext };
+export { ThemeContextProvider, ThemeContext }

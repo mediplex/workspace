@@ -1,8 +1,8 @@
-import { useContext, FC } from "react"
-import { PageContext } from "../PageContext"
+import { useContext, FC } from 'react'
+import { PageContext } from '../PageContext'
 
 const Header: FC = () => {
-    const header = useContext(PageContext);
-    return <></>
+  const header = useContext(PageContext)
+  return <></>
 }
 export { Header }
