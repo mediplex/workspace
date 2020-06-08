@@ -8,9 +8,12 @@ import {
   CssBaseline,
   ThemeOptions,
 } from '@material-ui/core'
-import { blue, pink } from '@material-ui/core/colors'
+import { pink, grey } from '@material-ui/core/colors'
 
 const initialCustomThemeOptions: ThemeOptions = {
+  // shape: {
+  //   borderRadius: '20px',
+  // },
   typography: {
     h1: {
       fontSize: '3rem',
@@ -63,8 +66,8 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
           primary: {
             main:
               customThemeOptions.palette?.type === 'light'
-                ? blue[800]
-                : blue[900],
+                ? grey[700]
+                : grey[900],
           },
           secondary: {
             main:

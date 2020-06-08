@@ -24,19 +24,17 @@ const useStyles = makeStyles(() =>
 
 const TopBar = () => {
   const {
-    state: {
-      topBar: { content, visible },
-    },
+    state: { topBar },
     setTopBarVisibility,
   } = useContext(PageContext)
   const classes = useStyles()
 
-  return visible ? (
+  return topBar?.visible ? (
     <>
       <AppBar color="primary">
         <Toolbar variant="dense">
           <Typography className={classes.content} align="center">
-            {content}
+            {topBar?.content}
           </Typography>
           <IconButton
             className={classes.icon}

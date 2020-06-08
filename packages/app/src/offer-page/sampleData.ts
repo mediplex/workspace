@@ -3,7 +3,10 @@ import { State } from './State'
 const data: State = {
   announcement: {
     title: 'FLASH SALE',
-    content: '40% discount until stocks last',
+    content: '► 40% discount until stocks last<br/>► Worldwide Free Shipping',
+    countdown: {
+      initialDeadline: 57000 * 999,
+    },
   },
   description: 'some description',
   productView: {
@@ -12,20 +15,35 @@ const data: State = {
       max: 26,
     },
     buyButton: {
-      content: 'Buy Now',
+      content: '▶ Buy Now',
     },
-    countdown: {
-      initialDeadline: 57000,
-    },
-    gallery: [],
-    name: 'Awesome Product',
+    gallery: [
+      {
+        src: 'https://picsum.photos/600',
+        alt: '',
+      },
+      {
+        src: 'https://picsum.photos/601',
+        alt: '',
+      },
+      {
+        src: 'https://picsum.photos/602',
+        alt: '',
+      },
+      {
+        src: 'https://picsum.photos/603',
+        alt: '',
+      },
+    ],
+    headline: 'Lumination - Limitted Edition',
+    subheadline: 'Your Smart Neck Massager',
     pricing: {
       originalPrice: 138,
       discount: 'You save over 50%',
       discountedPrice: 59.99,
     },
     ratingSummary: 4.5,
-    realTimevisitorRange: {
+    visitorRange: {
       min: 55,
       max: 68,
     },
@@ -55,10 +73,10 @@ const data: State = {
       },
     ],
   },
-  topBar: {
-    visible: true,
-    content: '🌐 Worldwide Free Shipping',
-  },
+  // topBar: {
+  //   visible: true,
+  //   content: '🌐 Worldwide Free Shipping',
+  // },
   reviews: null,
   meta: {
     metaTags: [

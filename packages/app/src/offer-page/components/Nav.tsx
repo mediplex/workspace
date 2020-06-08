@@ -37,11 +37,11 @@ const Nav: FunctionComponent<NavProps> = () => {
   const classes = useStyles()
   return (
     <ElevationScroll>
-      <AppBar color="transparent" position="sticky">
+      <AppBar position="sticky" color="primary">
         {/* <ScrollProgress /> */}
         <Toolbar>
           <Chip
-            variant="outlined"
+            variant="default"
             avatar={
               <Avatar>
                 <strong>1</strong>
@@ -52,10 +52,10 @@ const Nav: FunctionComponent<NavProps> = () => {
 
           <div className={classes.spacer} />
 
-          <Hidden mdDown>
-            <Button>Product</Button>
-            <Button>Description</Button>
-            <Button>Reviews</Button>
+          <Hidden smDown>
+            <Button color="inherit">Product</Button>
+            <Button color="inherit">Description</Button>
+            <Button color="inherit">Reviews</Button>
           </Hidden>
 
           <Button

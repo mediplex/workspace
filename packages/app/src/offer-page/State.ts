@@ -1,23 +1,23 @@
-type Image = {
+export type Image = {
   src: string
   alt: string
 }
 
-type Pricing = {
+export type Pricing = {
   originalPrice: number
   discountedPrice: number
   discount: string
 }
 
-type BuyButton = {
+export type BuyButton = {
   content: string
 }
 
-type Countdown = {
+export type Countdown = {
   initialDeadline: number
 }
 
-type Variant = {
+export type Variant = {
   name: string
   options: {
     name: string
@@ -27,7 +27,7 @@ type Variant = {
   }[]
 }
 
-type Review = {
+export type Review = {
   name: string
   rating: number
   comment: string
@@ -37,49 +37,50 @@ type Review = {
   }
 }
 
-type VisitorRange = {
+export type VisitorRange = {
   min: number
   max: number
 }
 
-type MetaTag = {
+export type MetaTag = {
   property?: string
   name: string
   content: string
 }
 
-type Stock = {
+export type Stock = {
   min: number
   max: number
 }
 
-type ProductView = {
+export type ProductView = {
   gallery: Image[]
-  name: string
+  headline: string
+  subheadline: string
   ratingSummary: number
   reviewsSummary: number
-  stock: Stock
-  realTimevisitorRange: VisitorRange
-  countdown: Countdown
+  stock?: Stock
+  visitorRange?: VisitorRange
+  
   pricing: Pricing
   shortDescription: string
   variants: Variant[]
   buyButton: BuyButton
 }
 
-type TopBar = {
+export type TopBar = {
   visible: boolean
   content: string
 }
-
-type Announcement = {
+export type Announcement = {
   title: string
   content: string
+  countdown: Countdown
 }
 
 export interface State {
-  topBar: TopBar
-  announcement: Announcement
+  topBar?: TopBar
+  announcement?: Announcement
   productView: ProductView
   description: string
   reviews: Review[]

@@ -7,9 +7,11 @@ import {
   createStyles,
   lighten,
   darken,
+  Grid,
 } from '@material-ui/core'
 import { FlashOn } from '@material-ui/icons'
 import { PageContext } from '../PageContext'
+import { Countdown } from './Countdown'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,8 +22,6 @@ const useStyles = makeStyles((theme: Theme) =>
       borderColor: theme.palette.warning.main,
       color: darken(theme.palette.warning.dark, 0.5),
       backgroundColor: lighten(theme.palette.warning.light, 0.5),
-    },
-    container: {
       marginTop: theme.spacing(3),
       marginBottom: theme.spacing(3),
     },
@@ -39,17 +39,34 @@ const Announcement = () => {
     state: { announcement },
   } = useContext(PageContext)
 
-  const { title, content } = announcement
+  const {
+    title,
+    content,
+    countdown: { initialDeadline },
+  } = announcement
 
   return announcement ? (
-    <Container maxWidth="xs" className={classes.container}>
+    <Container maxWidth="xs">
       <div className={classes.root}>
-        <Typography align="center" gutterBottom>
-          <FlashOn className={classes.icon} />
-          <strong>{title}</strong>
-          <FlashOn className={classes.icon} />
-        </Typography>
-        <Typography align="center">{content}</Typography>
+        <Grid container spacing={1} justify="center">
+          <Grid item>
+            <Typography align="center" gutterBottom>
+              <FlashOn className={classes.icon} />
+              <strong>{title}</strong>
+              <FlashOn className={classes.icon} />
+            </Typography>
+          </Grid>
+          <Grid item>
+            {' '}
+            <Countdown initialDeadline={initialDeadline} />
+          </Grid>
+          <Grid item>
+            <Typography
+              align="center"
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
+          </Grid>
+        </Grid>
       </div>
     </Container>
   ) : null
