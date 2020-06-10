@@ -18,7 +18,7 @@ const Page: FC<PageProps> = ({ data }) => {
         style={{
           background: '#333',
           color: '#fff',
-          padding: '4rem',
+          padding: '2rem',
           textAlign: 'center',
         }}
       >

@@ -6,9 +6,9 @@ import {
   Toolbar,
   Avatar,
   Button,
-  Chip,
   Hidden,
   Theme,
+  Typography,
 } from '@material-ui/core'
 
 // import { ScrollProgress } from '../../features';
@@ -32,6 +32,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       marginLeft: theme.spacing(2),
     },
   },
+  logo: {
+    backgroundColor: theme.palette.getContrastText(theme.palette.primary.main),
+    color: theme.palette.primary.main,
+    width: theme.spacing(5),
+    height: theme.spacing(5),
+  },
 }))
 const Nav: FunctionComponent<NavProps> = () => {
   const classes = useStyles()
@@ -40,16 +46,7 @@ const Nav: FunctionComponent<NavProps> = () => {
       <AppBar position="sticky" color="primary">
         {/* <ScrollProgress /> */}
         <Toolbar>
-          <Chip
-            variant="default"
-            avatar={
-              <Avatar>
-                <strong>1</strong>
-              </Avatar>
-            }
-            label={<strong>Body Care</strong>}
-          />
-
+          <Typography color="inherit"><strong>LOGO</strong></Typography>
           <div className={classes.spacer} />
 
           <Hidden smDown>

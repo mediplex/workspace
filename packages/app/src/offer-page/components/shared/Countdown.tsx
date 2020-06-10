@@ -5,9 +5,8 @@ import {
   Grid,
   Typography,
 } from '@material-ui/core'
-import { FunctionComponent, useState, useEffect } from 'react'
-import React from 'react'
-import { Countdown as CountdownProps } from '../State'
+import { FC, useState, useEffect, useContext } from 'react'
+import { PageContext } from '../..'
 
 type Timer = {
   seconds: number
@@ -75,8 +74,16 @@ const getTimer = (ms: number): Timer => {
   return timer
 }
 
-const Countdown: FunctionComponent<CountdownProps> = ({ initialDeadline }) => {
+const Countdown: FC = () => {
   const [timer, setTimer] = useState<Timer | undefined>()
+
+  const {
+    state: {
+      announcement: {
+        countdown: { initialDeadline },
+      },
+    },
+  } = useContext(PageContext)
 
   useEffect(() => {
     let timeLeft = initialDeadline
@@ -90,7 +97,7 @@ const Countdown: FunctionComponent<CountdownProps> = ({ initialDeadline }) => {
     return () => clearInterval(interval)
   }, [])
   return timer ? (
-    <Grid container spacing={1}>
+    <Grid container justify="center" spacing={1}>
       <Grid item>
         <Template label="Day" value={timer.days} />
       </Grid>

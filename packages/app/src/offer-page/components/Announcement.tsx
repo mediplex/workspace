@@ -11,22 +11,22 @@ import {
 } from '@material-ui/core'
 import { FlashOn } from '@material-ui/icons'
 import { PageContext } from '../PageContext'
-import { Countdown } from './Countdown'
+import { Countdown } from './shared'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       padding: theme.spacing(2),
-      border: 'solid',
-      borderRadius: theme.shape.borderRadius,
-      borderColor: theme.palette.warning.main,
-      color: darken(theme.palette.warning.dark, 0.5),
-      backgroundColor: lighten(theme.palette.warning.light, 0.5),
+      // border: 'solid',
+      // borderRadius: theme.shape.borderRadius,
+      // borderColor: theme.palette.primary.main,
+      color: darken(theme.palette.primary.dark, 0.5),
+      backgroundColor: lighten(theme.palette.primary.light, 0.9),
       marginTop: theme.spacing(3),
       marginBottom: theme.spacing(3),
     },
     icon: {
-      color: theme.palette.warning.main,
+      color: theme.palette.primary.main,
       verticalAlign: 'middle',
     },
   })
@@ -39,36 +39,29 @@ const Announcement = () => {
     state: { announcement },
   } = useContext(PageContext)
 
-  const {
-    title,
-    content,
-    countdown: { initialDeadline },
-  } = announcement
+  const { title, content } = announcement
 
   return announcement ? (
-    <Container maxWidth="xs">
-      <div className={classes.root}>
-        <Grid container spacing={1} justify="center">
-          <Grid item>
-            <Typography align="center" gutterBottom>
-              <FlashOn className={classes.icon} />
-              <strong>{title}</strong>
-              <FlashOn className={classes.icon} />
-            </Typography>
-          </Grid>
-          <Grid item>
-            {' '}
-            <Countdown initialDeadline={initialDeadline} />
-          </Grid>
-          <Grid item>
-            <Typography
-              align="center"
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
-          </Grid>
+    <div className={classes.root}>
+      <Grid container direction="column" spacing={1} justify="center">
+        <Grid item>
+          <Typography align="center" gutterBottom>
+            <FlashOn className={classes.icon} />
+            <strong>{title}</strong>
+            <FlashOn className={classes.icon} />
+          </Typography>
         </Grid>
-      </div>
-    </Container>
+        <Grid item>
+          <Countdown />
+        </Grid>
+        <Grid item>
+          <Typography
+            align="center"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
+        </Grid>
+      </Grid>
+    </div>
   ) : null
 }
 
