@@ -20,19 +20,19 @@ const data: State = {
     },
     gallery: [
       {
-        src: 'https://picsum.photos/600?grayscale&1',
+        src: 'https://picsum.photos/400/500?grayscale&1',
         alt: '',
       },
       {
-        src: 'https://picsum.photos/600?grayscale&2',
+        src: 'https://picsum.photos/400/500?grayscale&2',
         alt: '',
       },
       {
-        src: 'https://picsum.photos/600?grayscale&3',
+        src: 'https://picsum.photos/400/500?grayscale&3',
         alt: '',
       },
       {
-        src: 'https://picsum.photos/600?grayscale&4',
+        src: 'https://picsum.photos/400/500?grayscale&4',
         alt: '',
       },
     ],

@@ -4,7 +4,6 @@ import {
   makeStyles,
   AppBar,
   Toolbar,
-  Avatar,
   Button,
   Hidden,
   Theme,
@@ -46,7 +45,10 @@ const Nav: FunctionComponent<NavProps> = () => {
       <AppBar position="sticky" color="primary">
         {/* <ScrollProgress /> */}
         <Toolbar>
-          <Typography color="inherit"><strong>LOGO</strong></Typography>
+          <Typography color="inherit">
+            <span>⚪⚪⚪</span>
+          </Typography>
+
           <div className={classes.spacer} />
 
           <Hidden smDown>
@@ -62,8 +64,6 @@ const Nav: FunctionComponent<NavProps> = () => {
           >
             Buy Now
           </Button>
-
-          {/* <BuyButton /> */}
         </Toolbar>
       </AppBar>
     </ElevationScroll>

@@ -11,9 +11,9 @@ import {
 import { pink, grey, amber, orange } from '@material-ui/core/colors'
 
 const initialCustomThemeOptions: ThemeOptions = {
-  shape: {
-    borderRadius: 18,
-  },
+  // shape: {
+  //   borderRadius: 18,
+  // },
   palette: {
     type: 'light',
   },

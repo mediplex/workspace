@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { State } from './State'
 import { PageContextProvider } from './PageContext'
-import { TopBar, Nav, Announcement, ProductView } from './components'
+import { TopBar, Nav, ProductView } from './components'
 
 type PageProps = {
   data: State
@@ -12,7 +12,6 @@ const Page: FC<PageProps> = ({ data }) => {
     <PageContextProvider data={data}>
       <TopBar />
       <Nav />
-      <Announcement />
       <ProductView />
       <div
         style={{
@@ -24,6 +23,11 @@ const Page: FC<PageProps> = ({ data }) => {
       >
         <h2>{`Hurry, This FREE offer won't last long!`}</h2>
       </div>
+      <div
+        style={{
+          height: '300vh',
+        }}
+      ></div>
     </PageContextProvider>
   )
 }

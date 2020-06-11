@@ -15,13 +15,16 @@ import {
   StockWarning,
   BuyButton,
   ShortDescription,
+  VariantSelector,
 } from './shared'
+import { Alert } from '@material-ui/lab'
+import { Announcement } from './Announcement'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      marginTop: theme.spacing(6),
-      marginBottom: theme.spacing(6),
+      marginTop: theme.spacing(3),
+      marginBottom: theme.spacing(3),
     },
     buyButton: {},
     selecteImage: {
@@ -32,6 +35,11 @@ const useStyles = makeStyles((theme: Theme) =>
     stockValue: {
       padding: theme.spacing(1),
     },
+    [theme.breakpoints.up('md')]: {
+      productDetail: {
+        maxWidth: theme.spacing(48),
+      },
+    },
   })
 )
 
@@ -40,12 +48,13 @@ const ProductView = () => {
 
   return (
     <Container className={classes.root}>
-      <Grid container spacing={4} justify="center">
-        <Grid item xs={12} md={8}>
+      <Grid container spacing={6} justify="center">
+        <Grid item xs={12} md>
           <Hidden mdUp>
+            <Announcement />
             <ProductNameAndPrice />
             <RatingAndReviewsSummary />
-            <StockWarning />
+            <Alert severity="warning">Low inventory! Order soon.</Alert>{' '}
             <ShortDescription />
             <MobileGallery />
           </Hidden>
@@ -54,13 +63,16 @@ const ProductView = () => {
           </Hidden>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} className={classes.productDetail}>
           <Hidden smDown>
+            <Announcement />
             <ProductNameAndPrice />
             <RatingAndReviewsSummary />
+            <Alert severity="warning">Low inventory! Order soon.</Alert>
             <ShortDescription />
-            <Divider variant="fullWidth" />
+            {/* <Divider variant="fullWidth" /> */}
           </Hidden>
+          <VariantSelector />
           <BuyButton />
         </Grid>
       </Grid>

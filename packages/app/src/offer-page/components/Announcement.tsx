@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import {
-  Container,
   Typography,
   makeStyles,
   Theme,
@@ -22,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       // borderColor: theme.palette.primary.main,
       color: darken(theme.palette.primary.dark, 0.5),
       backgroundColor: lighten(theme.palette.primary.light, 0.9),
-      marginTop: theme.spacing(3),
+      // marginTop: theme.spacing(3),
       marginBottom: theme.spacing(3),
     },
     icon: {
