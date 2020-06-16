@@ -21,9 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const RatingAndReviewsSummary: FC = () => {
   const classes = useStyles()
   const {
-    state: {
-      productView: { ratingSummary, reviewsSummary },
-    },
+    state: { ratingSummary, reviewsSummary },
   } = useContext(PageContext)
   return (
     <Grid item container>

@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-const Template: FunctionComponent<{ value: number; label: string }> = ({
+const Template: FC<{ value: number; label: string }> = ({
   value,
   label,
 }) => {

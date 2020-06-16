@@ -1,11 +1,10 @@
-import { Typography } from '@material-ui/core';
-import { useContext, FC } from 'react';
-import { PageContext } from '../../PageContext';
-
-
-
+import { Typography } from '@material-ui/core'
+import { useContext, FC } from 'react'
+import { PageContext } from '../../PageContext'
 
 export const ShortDescription: FC = () => {
-  const { state: { productView: { shortDescription }, }, } = useContext(PageContext);
-  return <Typography paragraph>{shortDescription}</Typography>;
-};
+  const {
+    state: { shortDescription },
+  } = useContext(PageContext)
+  return <Typography paragraph>{shortDescription}</Typography>
+}

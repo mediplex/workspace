@@ -25,9 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 const VariantSelector: FC = () => {
   const classes = useStyles()
   const {
-    state: {
-      productView: { variants },
-    },
+    state: { variants },
   } = useContext(PageContext)
 
   return (

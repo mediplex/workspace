@@ -18,9 +18,7 @@ export const BuyButton: FC = () => {
   const classes = useStyles()
   const {
     state: {
-      productView: {
         buyButton: { content },
-      },
     },
   } = useContext(PageContext)
   return (

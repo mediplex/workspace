@@ -35,7 +35,9 @@ const Announcement = () => {
   const classes = useStyles()
 
   const {
-    state: { announcement },
+    state: {
+       announcement ,
+    },
   } = useContext(PageContext)
 
   const { title, content } = announcement

@@ -1,90 +1,82 @@
-type Image = {
-  src: string
-  alt: string
-}
+import { ImgProps } from '../offer-page/components/shared';
+
+type Image = ImgProps;
 
 type Pricing = {
-  originalPrice: number
-  discountedPrice: number
-  discount: string
-}
+  price: number;
+  comparePrice: number;
+  cost: number;
+  discount: string;
+};
 
 type BuyButton = {
-  content: string
-}
+  content: string;
+};
 
 type Countdown = {
-  initialDeadline: number
-}
-
-type Variant = {
-  name: string
-  options: {
-    name: string
-    text: string
-    color: string
-    imageSrc: string
-  }[]
-}
+  initialDeadline: number;
+};
 
 type Review = {
-  name: string
-  rating: number
-  comment: string
+  name: string;
+  rating: number;
+  comment: string;
   photos: {
-    src: string
-    alt: string
-  }
-}
+    src: string;
+    alt: string;
+  };
+};
 
-type VisitorRange = {
-  min: number
-  max: number
-}
+type LiveVisitorCounter = {
+  min: number;
+  max: number;
+};
 
 type MetaTag = {
-  property?: string
-  name: string
-  content: string
-}
+  property?: string;
+  name: string;
+  content: string;
+};
 
-type Stock = {
-  min: number
-  max: number
-}
-
-type ProductView = {
-  gallery: Image[]
-  headline: string
-  subheadline: string
-  ratingSummary: number
-  reviewsSummary: number
-  stock?: Stock
-  visitorRange?: VisitorRange
-  
-  pricing: Pricing
-  shortDescription: string
-  variants: Variant[]
-  buyButton: BuyButton
-}
+type Inventory = {
+  lowInventoryAlert: boolean;
+  min: number;
+  max: number;
+};
 
 type TopBar = {
-  visible: boolean
-  content: string
-}
+  visible: boolean;
+  content: string;
+};
 type Announcement = {
-  title: string
-  content: string
-  countdown: Countdown
-}
+  title: string;
+  content: string;
+  countdown: Countdown;
+};
 
 export interface State {
-  topBar?: TopBar
-  announcement?: Announcement
-  productView: ProductView
-  description: string
-  reviews: Review[]
+  topBar?: TopBar;
+  id: string;
+  name: string;
+  category: string;
+  announcement?: Announcement;
+  ratingSummary: number;
+  reviewsSummary: number;
+  inventory: Inventory;
+  pricing: Pricing;
+  liveVisitorCounter: LiveVisitorCounter;
+  shortDescription: string;
+  images: Image[];
+  // selectedVariant: number;
+  // variants: {
+  //   name: string;
+  //   options: string[];
+  //   mainImageIndex?: number;
+  // }[];
+  buyButton: BuyButton;
+  description: string;
+  reviews: Review[];
   meta: {
-    metaTags: MetaTag[]
-  }
+    metaTags: MetaTag[];
+  };
 }

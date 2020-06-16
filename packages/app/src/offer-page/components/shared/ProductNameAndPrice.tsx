@@ -1,14 +1,8 @@
-import {
-  Grid,
-  Typography,
-  makeStyles,
-  Theme,
-  createStyles,
-} from '@material-ui/core'
+import { Grid, Typography, makeStyles, createStyles } from '@material-ui/core'
 import { useContext, FC } from 'react'
 import { PageContext } from '../../PageContext'
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       // marginBottom: theme.spacing(1),
@@ -18,24 +12,22 @@ const useStyles = makeStyles((theme: Theme) =>
 export const ProductNameAndPrice: FC = () => {
   const classes = useStyles()
   const {
-    state: {
-      productView: { headline, subheadline, pricing },
-    },
+    state: { name, category, pricing },
   } = useContext(PageContext)
   return (
     <Grid className={classes.root} container>
       <Grid item xs>
-        <Typography variant="caption">{subheadline}</Typography>
+        <Typography variant="caption">{category}</Typography>
         <Typography variant="h3" gutterBottom>
-          {headline}
+          {name}
         </Typography>
       </Grid>
       <Grid item>
         <Typography color="secondary" align="right">
-          $ {pricing.discountedPrice}
+          $ {pricing.price}
         </Typography>
         <Typography variant="body2" color="textSecondary" align="right">
-          <del>$ {pricing.originalPrice}</del>
+          <del>$ {pricing.comparePrice}</del>
         </Typography>
       </Grid>
     </Grid>

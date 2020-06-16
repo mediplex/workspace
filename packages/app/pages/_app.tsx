@@ -1,18 +1,21 @@
-import React from 'react'
-import Head from 'next/head'
-import { AppProps } from 'next/app'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { Providers } from '../src/Providers'
+import React from 'react';
+import Head from 'next/head';
+import { AppProps } from 'next/app';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { Providers } from '../src/Providers';
 
-export default function MyApp(props: AppProps) {
-  const { Component, pageProps } = props
+import '../lazysizes.css';
+
+
+export default (props: AppProps) => {
+  const { Component, pageProps } = props;
 
   React.useEffect(() => {
-    const jssStyles = document.querySelector('#jss-server-side')
+    const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
-      jssStyles.parentElement?.removeChild(jssStyles)
+      jssStyles.parentElement?.removeChild(jssStyles);
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -27,5 +30,5 @@ export default function MyApp(props: AppProps) {
         <Component {...pageProps} />
       </Providers>
     </>
-  )
-}
+  );
+};

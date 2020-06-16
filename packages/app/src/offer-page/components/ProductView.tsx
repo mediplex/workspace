@@ -4,21 +4,19 @@ import {
   makeStyles,
   createStyles,
   Theme,
-  Divider,
   Hidden,
-} from '@material-ui/core'
+} from '@material-ui/core';
 import {
   Gallery,
   MobileGallery,
   ProductNameAndPrice,
   RatingAndReviewsSummary,
-  StockWarning,
   BuyButton,
   ShortDescription,
-  VariantSelector,
-} from './shared'
-import { Alert } from '@material-ui/lab'
-import { Announcement } from './Announcement'
+  // VariantSelector,
+  InventoryAlert,
+} from './shared';
+import { Announcement } from './Announcement';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,10 +39,10 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
   })
-)
+);
 
 const ProductView = () => {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Container className={classes.root}>
@@ -54,7 +52,7 @@ const ProductView = () => {
             <Announcement />
             <ProductNameAndPrice />
             <RatingAndReviewsSummary />
-            <Alert severity="warning">Low inventory! Order soon.</Alert>{' '}
+            <InventoryAlert />
             <ShortDescription />
             <MobileGallery />
           </Hidden>
@@ -68,16 +66,15 @@ const ProductView = () => {
             <Announcement />
             <ProductNameAndPrice />
             <RatingAndReviewsSummary />
-            <Alert severity="warning">Low inventory! Order soon.</Alert>
+            <InventoryAlert />
             <ShortDescription />
-            {/* <Divider variant="fullWidth" /> */}
           </Hidden>
-          <VariantSelector />
+          {/* <VariantSelector /> */}
           <BuyButton />
         </Grid>
       </Grid>
     </Container>
-  )
-}
+  );
+};
 
-export { ProductView }
+export { ProductView };

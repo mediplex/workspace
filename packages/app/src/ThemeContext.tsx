@@ -8,7 +8,7 @@ import {
   CssBaseline,
   ThemeOptions,
 } from '@material-ui/core'
-import { pink, grey, amber, orange } from '@material-ui/core/colors'
+import { pink, grey, orange } from '@material-ui/core/colors'
 
 const initialCustomThemeOptions: ThemeOptions = {
   // shape: {
