@@ -2,9 +2,9 @@ import { ImgProps } from '../offer-page/components/shared';
 
 type Image = ImgProps;
 
-type Pricing = {
-  price: number;
-  comparePrice: number;
+type Price = {
+  value: number;
+  compareAt: number;
   cost: number;
   discount: string;
 };
@@ -54,6 +54,11 @@ type Announcement = {
   countdown: Countdown;
 };
 
+type Variant = {
+  id: string;
+  image: Image;
+};
+
 export interface State {
   topBar?: TopBar;
   id: string;
@@ -63,16 +68,11 @@ export interface State {
   ratingSummary: number;
   reviewsSummary: number;
   inventory: Inventory;
-  pricing: Pricing;
+  price: Price;
   liveVisitorCounter: LiveVisitorCounter;
   shortDescription: string;
   images: Image[];
-  // selectedVariant: number;
-  // variants: {
-  //   name: string;
-  //   options: string[];
-  //   mainImageIndex?: number;
-  // }[];
+  variants: Variant[];
   buyButton: BuyButton;
   description: string;
   reviews: Review[];

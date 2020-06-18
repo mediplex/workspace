@@ -6,6 +6,9 @@ import { ShoppingCart } from '@material-ui/icons';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      
+    }
+    ,button: {
       // marginTop: theme.spacing(3),
       // marginBottom: theme.spacing(3),
       padding: theme.spacing(2),
@@ -22,9 +25,9 @@ export const BuyButton: React.FC<{ className: string }> = ({ className }) => {
     },
   } = useContext(PageContext);
   return (
-    <div className={className}>
-      <Button
-        className={classes.root}
+<div className={classes.root + (className ? ' ' + className : '')}>  
+    <Button
+        className={classes.button}
         fullWidth
         color="secondary"
         variant="contained"

@@ -13,7 +13,7 @@ export const InventoryAlert: React.FC<{ className: string }> = ({
   } = useContext(PageContext);
 
   return lowInventoryAlert ? (
-    <div className={className}>
+    <div className={(className ? ' ' + className : '')}>
       <Alert severity="warning">Low inventory! Order soon.</Alert>
     </div>
   ) : null;

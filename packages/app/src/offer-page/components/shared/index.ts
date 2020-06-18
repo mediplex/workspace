@@ -4,7 +4,7 @@ export * from './MobileGallery';
 export * from './Countdown';
 export * from './BuyButton';
 export * from './Countdown';
-export * from './ProductNameAndPrice';
+export * from './NameAndPrice';
 export * from './RatingAndReviewsSummary';
 export * from './ShortDescription';
 export * from './InventoryAlert';

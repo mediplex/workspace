@@ -8,7 +8,7 @@ module.exports = {
   
   distDir: '.next',
   //useFileSystemPublicRoutes: true,
-  target: 'serverless', // ['server', 'serverless', 'experimental-serverless-trace']
+  target: 'server', // ['server', 'serverless', 'experimental-serverless-trace']
   poweredByHeader: false,
   devIndicators: {
     buildActivity: true,

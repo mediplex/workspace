@@ -1,6 +1,60 @@
 import { State } from './State';
 
-const data: State = {
+const offer1: State = {
+  variants: [
+    {
+      id: 'offer-1',
+      image: {
+        alt: 'Red',
+        lowSrc: ' https://via.placeholder.com/40x50.webp?text=1%2040x50',
+        ratio: 5 / 4,
+        srcSet: `
+          https://via.placeholder.com/400x500.webp?text=1%20400x500 400w,
+          https://via.placeholder.com/800x1000.webp?text=1%20800x1000 800w,
+          https://via.placeholder.com/1600x2000.webp?text=1%201600x2000x2000 1600w,
+        `,
+      },
+    },
+    {
+      id: 'offer-2',
+      image: {
+        alt: 'Red',
+        lowSrc: ' https://via.placeholder.com/40x50.webp?text=1%2040x50',
+        ratio: 5 / 4,
+        srcSet: `
+          https://via.placeholder.com/400x500.webp?text=1%20400x500 400w,
+          https://via.placeholder.com/800x1000.webp?text=1%20800x1000 800w,
+          https://via.placeholder.com/1600x2000.webp?text=1%201600x2000x2000 1600w,
+        `,
+      },
+    },
+    {
+      id: 'offer-3',
+      image: {
+        alt: 'Red',
+        lowSrc: ' https://via.placeholder.com/40x50.webp?text=1%2040x50',
+        ratio: 5 / 4,
+        srcSet: `
+          https://via.placeholder.com/400x500.webp?text=1%20400x500 400w,
+          https://via.placeholder.com/800x1000.webp?text=1%20800x1000 800w,
+          https://via.placeholder.com/1600x2000.webp?text=1%201600x2000x2000 1600w,
+        `,
+      },
+    },
+    {
+      id: 'offer-4',
+      image: {
+        alt: 'Red',
+        lowSrc: ' https://via.placeholder.com/40x50.webp?text=1%2040x50',
+        ratio: 5 / 4,
+        srcSet: `
+          https://via.placeholder.com/400x500.webp?text=1%20400x500 400w,
+          https://via.placeholder.com/800x1000.webp?text=1%20800x1000 800w,
+          https://via.placeholder.com/1600x2000.webp?text=1%201600x2000x2000 1600w,
+        `,
+      },
+    },
+  ],
   images: [
     {
       alt: 'Red',
@@ -65,12 +119,12 @@ const data: State = {
   buyButton: {
     content: 'Buy Now',
   },
-  name: 'Lumination - Limitted Edition',
+  name: 'Lumination - Offer 1',
   category: 'Smart Neck Massager',
-  pricing: {
-    comparePrice: 138.95,
+  price: {
+    compareAt: 138.95,
     discount: 'You save over 50%',
-    price: 59.95,
+    value: 59.95,
     cost: 18.96,
   },
   ratingSummary: 4.5,
@@ -81,8 +135,7 @@ const data: State = {
   reviewsSummary: 9367,
 
   shortDescription:
-    'Write a brief description of why this thing is awesome in the facilities tow Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet , consectetur.',
-
+    '<p>This is what you will get by subscribing to our service:</p><span>▶&nbsp;Benefit 1</span><br/><span>▶&nbsp;Benefit 1</span><br/><span>▶&nbsp;Benefit 1</span><br/>',
   reviews: null,
   meta: {
     metaTags: [
@@ -92,5 +145,16 @@ const data: State = {
       },
     ],
   },
+};
+
+const offer2: State = { ...offer1, name: 'Lumination - Offer 2' };
+const offer3: State = { ...offer1, name: 'Lumination - Offer 2' };
+const offer4: State = { ...offer1, name: 'Lumination - Offer 2' };
+
+const data = {
+  'offer-1': offer1,
+  'offer-2': offer2,
+  'offer-3': offer3,
+  'offer-4': offer4,
 };
 export { data };

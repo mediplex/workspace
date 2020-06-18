@@ -33,14 +33,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     control: {
       margin: theme.spacing(1),
-      // backgroundColor: theme.palette.grey[400],
-      // color: theme.palette.getContrastText(theme.palette.grey[400]),
     },
     stepper: {
       gridRow: '2/3',
       display: 'flex',
       justifyContent: 'center',
-      // padding: theme.spacing(1),
+      '&>*': {
+        borderRadius: theme.shape.borderRadius,
+      },
     },
     dot: {
       padding: theme.spacing(0.5),

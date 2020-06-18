@@ -1,17 +1,15 @@
 import React from 'react';
-import {
-  Grid,
-  Typography,
-  Divider,
-  makeStyles,
-  Theme,
-  createStyles,
-} from '@material-ui/core';
+import { Typography, makeStyles, Theme, createStyles } from '@material-ui/core';
 import { Rating } from '@material-ui/lab';
 import { PageContext } from '../../PageContext';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: {
+      display: 'grid',
+      gridTemplateColumns: 'auto 1fr',
+      gridColumnGap: theme.spacing(1 / 2),
+    },
     iconFilled: {
       color: theme.palette.primary.main,
     },
@@ -26,26 +24,16 @@ const RatingAndReviewsSummary: React.FC<{ className: string }> = ({
     state: { ratingSummary, reviewsSummary },
   } = React.useContext(PageContext);
   return (
-    <div className={className}>
-      <Grid item container>
-        <Grid container spacing={1}>
-          <Grid item>
-            <Rating
-              classes={{ iconFilled: classes.iconFilled }}
-              value={ratingSummary}
-              precision={0.5}
-              readOnly
-            />
-          </Grid>
-          <Grid item>{'|'}</Grid>
-          <Grid item>
-            <Typography>
-              <strong>{reviewsSummary}</strong> customer reviews
-            </Typography>
-          </Grid>
-        </Grid>
-        <Divider />
-      </Grid>
+    <div className={classes.root + (className ? ' ' + className : '')}>
+      <Rating
+        classes={{ iconFilled: classes.iconFilled }}
+        value={ratingSummary}
+        precision={0.5}
+        readOnly
+      />
+      <Typography>
+        <strong>{reviewsSummary}</strong> customer reviews
+      </Typography>
     </div>
   );
 };

@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
       gridGap: theme.spacing(1),
+      '&>*': {
+        borderRadius: theme.shape.borderRadius,
+      },
     },
   })
 );
@@ -21,7 +24,7 @@ export const Gallery: React.FC<{ className: string }> = ({ className }) => {
   } = React.useContext(PageContext);
 
   return (
-    <div className={className + ' ' + classes.root}>
+    <div className={classes.root + (className ? ' ' + className : '')}>
       {images.map(({ lowSrc, srcSet, ratio, alt }, index) => (
         <Img
           key={index}

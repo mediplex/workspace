@@ -6,7 +6,6 @@ import {
   createStyles,
   lighten,
   darken,
-  Grid,
 } from '@material-ui/core';
 import { FlashOn } from '@material-ui/icons';
 import { PageContext } from '../PageContext';
@@ -15,14 +14,14 @@ import { Countdown } from './shared';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      display: 'grid',
+      gridTemplateColumns: '1fr',
+      justifyItems: 'center',
+      gridRowGap: theme.spacing(1),
       padding: theme.spacing(2),
-      // border: 'solid',
-      // borderRadius: theme.shape.borderRadius,
-      // borderColor: theme.palette.primary.main,
+      borderRadius: theme.shape.borderRadius,
       color: darken(theme.palette.primary.dark, 0.5),
       backgroundColor: lighten(theme.palette.primary.light, 0.9),
-      // marginTop: theme.spacing(3),
-      // marginBottom: theme.spacing(3),
     },
     icon: {
       color: theme.palette.primary.main,
@@ -31,35 +30,31 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Announcement: React.FC<{className: string}> = ({ className }) => {
+const Announcement: React.FC<{ className: string }> = ({ className }) => {
   const classes = useStyles();
 
   const {
     state: { announcement },
   } = useContext(PageContext);
 
-  const { title, content } = announcement;
+  const {
+    title,
+    content,
+    countdown: { initialDeadline },
+  } = announcement;
 
   return announcement ? (
-    <div className={className + ' ' + classes.root}>
-      <Grid container direction="column" spacing={1} justify="center">
-        <Grid item>
-          <Typography align="center" gutterBottom>
-            <FlashOn className={classes.icon} />
-            <strong>{title}</strong>
-            <FlashOn className={classes.icon} />
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Countdown />
-        </Grid>
-        <Grid item>
-          <Typography
-            align="center"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
-        </Grid>
-      </Grid>
+    <div className={classes.root + (className ? ' ' + className : '')}>
+      <Typography align="center" gutterBottom>
+        <FlashOn className={classes.icon} />
+        <strong>{title}</strong>
+        <FlashOn className={classes.icon} />
+      </Typography>
+      <Countdown deadline={initialDeadline} />
+      <Typography
+        align="center"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </div>
   ) : null;
 };

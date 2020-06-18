@@ -9,8 +9,11 @@ export const ShortDescription: React.FC<{ className: string }> = ({
     state: { shortDescription },
   } = useContext(PageContext);
   return (
-    <div className={className}>
-      <Typography paragraph>{shortDescription}</Typography>
+    <div className={(className ? ' ' + className : '')}>
+      <Typography
+        component="div"
+        dangerouslySetInnerHTML={{ __html: shortDescription }}
+      />
     </div>
   );
 };

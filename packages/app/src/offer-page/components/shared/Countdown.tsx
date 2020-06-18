@@ -1,12 +1,5 @@
-import {
-  makeStyles,
-  Theme,
-  createStyles,
-  Grid,
-  Typography,
-} from '@material-ui/core';
 import React from 'react';
-import { PageContext } from '../..';
+import { makeStyles, Theme, createStyles } from '@material-ui/core';
 
 type Timer = {
   seconds: number;
@@ -17,51 +10,42 @@ type Timer = {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    valueContainer: {
-      border: '2px solid',
-      borderColor: 'inherit',
-      borderRadius: '50%',
-      width: theme.spacing(6),
-      height: theme.spacing(6),
+    root: {
+      display: 'grid',
+      gridTemplateColumns: `repeat(3,${theme.spacing(6)}px ${theme.spacing(1/2)}px) ${theme.spacing(6)}px`,
+      gridTemplateRows: `${theme.spacing(6)}px auto`,
+      gridColumnGap: theme.spacing(0.5),
+      gridRowGap: theme.spacing(0.25),
+      width: 'max-content',
     },
-    labelContainer: {
-      width: theme.spacing(6),
+    value: {
+      gridRow: '1/2',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      border: 'solid',
+      borderWidth: theme.spacing(1 / 4),
+      borderRadius: '50%',
+      fontSize: theme.typography.h4.fontSize,
+    },
+    label: {
+      gridRow: '2/3',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: theme.typography.caption.fontSize,
+    },
+    separator: {
+      gridRow: '1/2',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    space: {
+      gridRow: '2/3',
     },
   })
 );
-
-const Template: React.FC<{ value: number; label: string }> = ({
-  value,
-  label,
-}) => {
-  const classes = useStyles();
-  return (
-    <Grid item container direction="column">
-      <Grid
-        className={classes.valueContainer}
-        item
-        container
-        justify="center"
-        alignItems="center"
-      >
-        <Typography variant="h4" align="center">
-          {value.toString().padStart(2, '0')}
-        </Typography>
-      </Grid>
-      <Grid
-        className={classes.labelContainer}
-        item
-        container
-        justify="center"
-        alignItems="center"
-      >
-        <Typography variant="caption" align="center">
-          {value > 1 ? `${label}s` : `${label}s`}
-        </Typography>
-      </Grid>
-    </Grid>
-  );
-};
 
 const getTimer = (ms: number): Timer => {
   const timer = {
@@ -74,45 +58,43 @@ const getTimer = (ms: number): Timer => {
   return timer;
 };
 
-const Countdown: React.FC = () => {
-  const [timer, setTimer] = React.useState<Timer | undefined>();
+const Countdown: React.FC<{ className?: string, deadline: number }> = ({ className, deadline }) => {
+  const classes = useStyles();
 
-  const {
-    state: {
-      announcement: {
-        countdown: { initialDeadline },
-      },
-    },
-  } = React.useContext(PageContext);
+  const [{ days, hours, minutes, seconds }, setTimer] = React.useState<Timer | undefined>(
+    getTimer(deadline)
+  );
+  const [separator, setSeparator] = React.useState<boolean>(true);
 
   React.useEffect(() => {
-    let timeLeft = initialDeadline;
+    let timeLeft = deadline;
     const interval = setInterval(() => {
       if (timeLeft > 0) {
         timeLeft = timeLeft - 1000;
         setTimer(getTimer(timeLeft));
+        setSeparator((prev) => !prev);
       }
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
-  return timer ? (
-    <Grid container justify="center" spacing={1}>
-      <Grid item>
-        <Template label="Day" value={timer.days} />
-      </Grid>
-      <Grid item>
-        <Template label="Hour" value={timer.hours} />
-      </Grid>
-      <Grid item>
-        <Template label="Minute" value={timer.minutes} />
-      </Grid>
-      <Grid item>
-        <Template label="Second" value={timer.seconds} />
-      </Grid>
-    </Grid>
-  ) : (
-    <>countdown is loading...</>
+  return (
+    <div className={classes.root + (className ? ' ' + className : '')}>
+      <div className={classes.value}>{days.toString().padStart(2, '0')}</div>
+      <div className={classes.separator}>{separator && ':'}</div>
+      <div className={classes.value}>{hours.toString().padStart(2, '0')}</div>
+      <div className={classes.separator}>{separator && ':'}</div>
+      <div className={classes.value}>{minutes.toString().padStart(2, '0')}</div>
+      <div className={classes.separator}>{separator && ':'}</div>
+      <div className={classes.value}>{seconds.toString().padStart(2, '0')}</div>
+      <div className={classes.label}>day{days > 1 ? `s` : ``}</div>
+      <div className={classes.space} />
+      <div className={classes.label}>hour{hours > 1 ? `s` : ``}</div>
+      <div className={classes.space} />
+      <div className={classes.label}>minute{minutes > 1 ? `s` : ``}</div>
+      <div className={classes.space} />
+      <div className={classes.label}>second{seconds > 1 ? `s` : ``}</div>
+    </div>
   );
 };
 
