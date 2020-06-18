@@ -1,20 +1,18 @@
 import {
   Container,
-  Grid,
   makeStyles,
   createStyles,
   Theme,
-  Hidden,
+  useMediaQuery,
 } from '@material-ui/core';
 import {
-  Gallery,
   MobileGallery,
   ProductNameAndPrice,
   RatingAndReviewsSummary,
   BuyButton,
   ShortDescription,
-  // VariantSelector,
   InventoryAlert,
+  Gallery,
 } from './shared';
 import { Announcement } from './Announcement';
 
@@ -23,19 +21,64 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       marginTop: theme.spacing(3),
       marginBottom: theme.spacing(3),
+      display: 'grid',
     },
-    buyButton: {},
-    selecteImage: {
-      maxWidth: '100%',
-      borderRadius: theme.shape.borderRadius,
-    },
-    stockRoot: {},
-    stockValue: {
-      padding: theme.spacing(1),
-    },
+
     [theme.breakpoints.up('md')]: {
-      productDetail: {
-        maxWidth: theme.spacing(48),
+      root: {
+        gridTemplateColumns: `1fr ${theme.spacing(48)}px`,
+        gridColumnGap: theme.spacing(4),
+        gridRowGap: theme.spacing(2),
+        alignItems: 'start',
+      },
+      gallery: {
+        gridColumn: '1/2',
+        gridRow: '1/8',
+      },
+      announcement: {
+        gridColumn: '2/3',
+      },
+      productNameAndPrice: {
+        gridColumn: '2/3',
+      },
+      ratingAndReviewsSummary: {
+        gridColumn: '2/3',
+      },
+      inventory: {
+        gridColumn: '2/3',
+      },
+      shortDescription: {
+        gridColumn: '2/3',
+      },
+      buyButton: {
+        gridColumn: '2/3',
+      },
+    },
+    [theme.breakpoints.down('sm')]: {
+      root: {
+        gridTemplateColumns: '1fr',
+        gridRowGap: theme.spacing(2),
+      },
+      announcement: {
+        gridRow: '1/2',
+      },
+      productNameAndPrice: {
+        gridRow: '2/3',
+      },
+      ratingAndReviewsSummary: {
+        gridRow: '3/4',
+      },
+      inventory: {
+        gridRow: '4/5',
+      },
+      gallery: {
+        gridRow: '5/6',
+      },
+      shortDescription: {
+        gridRow: '6/7',
+      },
+      buyButton: {
+        gridRow: '7/8',
       },
     },
   })
@@ -43,36 +86,23 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const ProductView = () => {
   const classes = useStyles();
+  const isSmallScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down('sm')
+  );
 
   return (
     <Container className={classes.root}>
-      <Grid container spacing={6} justify="center">
-        <Grid item xs={12} md>
-          <Hidden mdUp>
-            <Announcement />
-            <ProductNameAndPrice />
-            <RatingAndReviewsSummary />
-            <InventoryAlert />
-            <ShortDescription />
-            <MobileGallery />
-          </Hidden>
-          <Hidden smDown>
-            <Gallery />
-          </Hidden>
-        </Grid>
-
-        <Grid item xs={12} className={classes.productDetail}>
-          <Hidden smDown>
-            <Announcement />
-            <ProductNameAndPrice />
-            <RatingAndReviewsSummary />
-            <InventoryAlert />
-            <ShortDescription />
-          </Hidden>
-          {/* <VariantSelector /> */}
-          <BuyButton />
-        </Grid>
-      </Grid>
+      {isSmallScreen ? (
+        <MobileGallery className={classes.gallery} />
+      ) : (
+        <Gallery className={classes.gallery} />
+      )}
+      <Announcement className={classes.announcement} />
+      <ProductNameAndPrice className={classes.productNameAndPrice} />
+      <RatingAndReviewsSummary className={classes.ratingAndReviewsSummary} />
+      <InventoryAlert className={classes.inventory} />
+      <ShortDescription className={classes.shortDescription} />
+      <BuyButton className={classes.buyButton} />
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import {
   Typography,
   makeStyles,
@@ -7,10 +7,10 @@ import {
   lighten,
   darken,
   Grid,
-} from '@material-ui/core'
-import { FlashOn } from '@material-ui/icons'
-import { PageContext } from '../PageContext'
-import { Countdown } from './shared'
+} from '@material-ui/core';
+import { FlashOn } from '@material-ui/icons';
+import { PageContext } from '../PageContext';
+import { Countdown } from './shared';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -22,28 +22,26 @@ const useStyles = makeStyles((theme: Theme) =>
       color: darken(theme.palette.primary.dark, 0.5),
       backgroundColor: lighten(theme.palette.primary.light, 0.9),
       // marginTop: theme.spacing(3),
-      marginBottom: theme.spacing(3),
+      // marginBottom: theme.spacing(3),
     },
     icon: {
       color: theme.palette.primary.main,
       verticalAlign: 'middle',
     },
   })
-)
+);
 
-const Announcement = () => {
-  const classes = useStyles()
+const Announcement: React.FC<{className: string}> = ({ className }) => {
+  const classes = useStyles();
 
   const {
-    state: {
-       announcement ,
-    },
-  } = useContext(PageContext)
+    state: { announcement },
+  } = useContext(PageContext);
 
-  const { title, content } = announcement
+  const { title, content } = announcement;
 
   return announcement ? (
-    <div className={classes.root}>
+    <div className={className + ' ' + classes.root}>
       <Grid container direction="column" spacing={1} justify="center">
         <Grid item>
           <Typography align="center" gutterBottom>
@@ -63,7 +61,7 @@ const Announcement = () => {
         </Grid>
       </Grid>
     </div>
-  ) : null
-}
+  ) : null;
+};
 
-export { Announcement }
+export { Announcement };

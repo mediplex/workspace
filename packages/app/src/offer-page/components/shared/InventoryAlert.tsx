@@ -1,16 +1,20 @@
-import {} from '@material-ui/core'
-import { useContext, FC } from 'react'
-import { PageContext } from '../../PageContext'
-import { Alert } from '@material-ui/lab'
+import {} from '@material-ui/core';
+import { useContext, FC } from 'react';
+import { PageContext } from '../../PageContext';
+import { Alert } from '@material-ui/lab';
 
-export const InventoryAlert: FC = () => {
+export const InventoryAlert: React.FC<{ className: string }> = ({
+  className,
+}) => {
   const {
     state: {
       inventory: { lowInventoryAlert },
     },
-  } = useContext(PageContext)
+  } = useContext(PageContext);
 
   return lowInventoryAlert ? (
-    <Alert severity="warning">Low inventory! Order soon.</Alert>
-  ) : null
-}
+    <div className={className}>
+      <Alert severity="warning">Low inventory! Order soon.</Alert>
+    </div>
+  ) : null;
+};

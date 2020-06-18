@@ -4,16 +4,16 @@ import {
   createStyles,
   Grid,
   Typography,
-} from '@material-ui/core'
-import { FC, useState, useEffect, useContext } from 'react'
-import { PageContext } from '../..'
+} from '@material-ui/core';
+import React from 'react';
+import { PageContext } from '../..';
 
 type Timer = {
-  seconds: number
-  minutes: number
-  hours: number
-  days: number
-}
+  seconds: number;
+  minutes: number;
+  hours: number;
+  days: number;
+};
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,13 +28,13 @@ const useStyles = makeStyles((theme: Theme) =>
       width: theme.spacing(6),
     },
   })
-)
+);
 
-const Template: FC<{ value: number; label: string }> = ({
+const Template: React.FC<{ value: number; label: string }> = ({
   value,
   label,
 }) => {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <Grid item container direction="column">
       <Grid
@@ -60,8 +60,8 @@ const Template: FC<{ value: number; label: string }> = ({
         </Typography>
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
 const getTimer = (ms: number): Timer => {
   const timer = {
@@ -69,13 +69,13 @@ const getTimer = (ms: number): Timer => {
     hours: Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
     minutes: Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60)),
     seconds: Math.floor((ms % (1000 * 60)) / 1000),
-  }
+  };
 
-  return timer
-}
+  return timer;
+};
 
-const Countdown: FC = () => {
-  const [timer, setTimer] = useState<Timer | undefined>()
+const Countdown: React.FC = () => {
+  const [timer, setTimer] = React.useState<Timer | undefined>();
 
   const {
     state: {
@@ -83,19 +83,19 @@ const Countdown: FC = () => {
         countdown: { initialDeadline },
       },
     },
-  } = useContext(PageContext)
+  } = React.useContext(PageContext);
 
-  useEffect(() => {
-    let timeLeft = initialDeadline
+  React.useEffect(() => {
+    let timeLeft = initialDeadline;
     const interval = setInterval(() => {
       if (timeLeft > 0) {
-        timeLeft = timeLeft - 1000
-        setTimer(getTimer(timeLeft))
+        timeLeft = timeLeft - 1000;
+        setTimer(getTimer(timeLeft));
       }
-    }, 1000)
+    }, 1000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
   return timer ? (
     <Grid container justify="center" spacing={1}>
       <Grid item>
@@ -113,7 +113,7 @@ const Countdown: FC = () => {
     </Grid>
   ) : (
     <>countdown is loading...</>
-  )
-}
+  );
+};
 
-export { Countdown }
+export { Countdown };

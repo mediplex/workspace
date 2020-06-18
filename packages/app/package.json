@@ -30,9 +30,10 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.55",
     "lazysizes": "^5.2.2",
-    "next": "latest",
+    "next": "^9.4.5-canary.12",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-swipeable-views": "^0.13.9"
   },
   "devDependencies": {
     "@testing-library/react": "^10.0.1",

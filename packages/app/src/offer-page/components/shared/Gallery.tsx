@@ -1,34 +1,36 @@
-import {
-  makeStyles,
-  createStyles,
-  GridList,
-  GridListTile,
-} from '@material-ui/core';
-import { FC, useContext } from 'react';
+import { makeStyles, createStyles, Theme } from '@material-ui/core';
+import React from 'react';
 import { PageContext } from '../..';
 import { Img } from './Img';
 
-export const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    thumbnail: {
-      width: '100%',
-      borderRadius: 6,
+    root: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gridGap: theme.spacing(1),
     },
   })
 );
 
-export const Gallery: FC = () => {
+export const Gallery: React.FC<{ className: string }> = ({ className }) => {
+  const classes = useStyles();
+
   const {
     state: { images },
-  } = useContext(PageContext);
+  } = React.useContext(PageContext);
 
   return (
-    <GridList cellHeight={'auto'} cols={2} spacing={8}>
+    <div className={className + ' ' + classes.root}>
       {images.map(({ lowSrc, srcSet, ratio, alt }, index) => (
-        <GridListTile key={index}>
-          <Img lowSrc={lowSrc} srcSet={srcSet} ratio={ratio} alt={alt} />
-        </GridListTile>
+        <Img
+          key={index}
+          lowSrc={lowSrc}
+          srcSet={srcSet}
+          ratio={ratio}
+          alt={alt}
+        />
       ))}
-    </GridList>
+    </div>
   );
 };

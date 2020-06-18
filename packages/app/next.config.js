@@ -1,4 +1,11 @@
+
+
 module.exports = {
+  typescript: {
+    ignoreDevErrors: true,
+    ignoreBuildErrors: true,
+  },
+  
   distDir: '.next',
   //useFileSystemPublicRoutes: true,
   target: 'serverless', // ['server', 'serverless', 'experimental-serverless-trace']

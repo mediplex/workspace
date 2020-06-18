@@ -1,6 +1,7 @@
 import lazySizes from 'lazysizes';
 import 'lazysizes/plugins/blur-up/ls.blur-up';
 import 'lazysizes/plugins/attrchange/ls.attrchange';
+import React from 'react';
 
 lazySizes.cfg.blurupMode = 'auto';
 
@@ -11,19 +12,17 @@ export type ImgProps = {
   alt: string;
 };
 
-/**
- *
- * @param lowSrc src
- * @param srcSet List of `${src} ${imageWidth}w separated by comma`
- * @param ratio image ratio
- * @param alt
- */
-export const Img: React.FC<ImgProps> = ({ srcSet, lowSrc, ratio, alt }) => {
+export const Img: React.FC<ImgProps> = ({
+  srcSet,
+  lowSrc,
+  ratio,
+  alt
+}) => {
   return (
     <>
-      <div className="mediabox">
+      <div className={'mediabox'}>
         <img
-          className="mediabox-img lazyload grow"
+          className="mediabox-img lazyload"
           data-srcset={srcSet}
           data-lowsrc={lowSrc}
           data-sizes="auto"
@@ -35,13 +34,6 @@ export const Img: React.FC<ImgProps> = ({ srcSet, lowSrc, ratio, alt }) => {
           .mediabox {
             padding-bottom: calc(${ratio} * 100%);
             overflow: hidden;
-          }
-
-          .grow {
-            transition: all 0.2s ease-in-out;
-          }
-          .grow:hover {
-            transform: scale(1.1);
           }
         `}
       </style>
