@@ -5,7 +5,7 @@ import { useTheme } from '@material-ui/core';
 import {
   Page as OfferPage,
   State as OfferPageData,
-} from '../../src/offer-page';
+} from 'offer-page';
 
 type IndexProps = {
   data: OfferPageData;
@@ -29,7 +29,7 @@ const getServerSideProps: GetServerSideProps<IndexProps> = async ({
 }) => {
   const { id } = query;
   const data: OfferPageData = await import(
-    '../../src/offer-page/sampleData'
+    '../../../offer-page/sampleData'
   ).then(({ data }) => data[id as string]);
 
   return {

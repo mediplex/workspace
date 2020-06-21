@@ -7,6 +7,9 @@
     "packages/*"
   ],
   "scripts": {
+    "dev": "yarn --cwd packages/core dev",
+    "build": "yarn --cwd packages/core build",
+    "start": "yarn --cwd packages/core start",
     "commit": "git-cz"
   },
   "devDependencies": {

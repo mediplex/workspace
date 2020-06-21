@@ -1,4 +1,4 @@
-import { ImgProps } from '../offer-page/components/shared';
+import { ImgProps } from './components/shared';
 
 type Image = ImgProps;
 
