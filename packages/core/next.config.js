@@ -1,8 +1,8 @@
 // Tell webpack to compile the "bar" package, necessary if you're using the export statement for example
 // https://www.npmjs.com/package/next-transpile-modules
-const withTM = require('next-transpile-modules')(['offer-page']);
+//const withTM = require('next-transpile-modules')(['offer-page']);
 
-module.exports = withTM({
+module.exports = {
   // typescript: {
   //   ignoreDevErrors: true,
   //   ignoreBuildErrors: true,
@@ -34,4 +34,4 @@ module.exports = withTM({
   // productionBrowserSourceMaps: false,
   // optionalCatchAll: false,
   // },
-});
+};

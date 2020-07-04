@@ -8,8 +8,8 @@ import {
 } from '@material-ui/core';
 import { ChevronLeft, ChevronRight } from '@material-ui/icons';
 import SwipeableViews from 'react-swipeable-views';
-import { PageContext } from '../../PageContext';
-import { Img } from './Img';
+import { PageContext } from "../PageContext";
+import { Img } from './shared';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -1,15 +1,9 @@
 import React, { useContext } from 'react';
-import {
-  Typography,
-  makeStyles,
-  Theme,
-  createStyles,
-  lighten,
-  darken,
-} from '@material-ui/core';
+import { Typography, makeStyles, Theme, createStyles } from '@material-ui/core';
 import { FlashOn } from '@material-ui/icons';
 import { PageContext } from '../PageContext';
 import { Countdown } from './shared';
+import { grey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,19 +12,21 @@ const useStyles = makeStyles((theme: Theme) =>
       gridTemplateColumns: '1fr',
       justifyItems: 'center',
       gridRowGap: theme.spacing(1),
-      padding: theme.spacing(2),
-      borderRadius: theme.shape.borderRadius,
-      color: darken(theme.palette.primary.dark, 0.5),
-      backgroundColor: lighten(theme.palette.primary.light, 0.9),
+      paddingTop: theme.spacing(1),
+      paddingRight: theme.spacing(2),
+      paddingBottom: theme.spacing(1),
+      paddingLeft: theme.spacing(2),
+      color: theme.palette.primary.main,
+      backgroundColor: grey[200],
     },
     icon: {
-      color: theme.palette.primary.main,
+      color: theme.palette.warning.main,
       verticalAlign: 'middle',
     },
   })
 );
 
-const Announcement: React.FC<{ className: string }> = ({ className }) => {
+const Announcement: React.FC<{ className?: string }> = ({ className }) => {
   const classes = useStyles();
 
   const {
@@ -43,7 +39,7 @@ const Announcement: React.FC<{ className: string }> = ({ className }) => {
     countdown: { initialDeadline },
   } = announcement;
 
-  return announcement ? (
+  return (
     <div className={classes.root + (className ? ' ' + className : '')}>
       <Typography align="center" gutterBottom>
         <FlashOn className={classes.icon} />
@@ -51,12 +47,9 @@ const Announcement: React.FC<{ className: string }> = ({ className }) => {
         <FlashOn className={classes.icon} />
       </Typography>
       <Countdown deadline={initialDeadline} />
-      <Typography
-        align="center"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <Typography align="center" dangerouslySetInnerHTML={{ __html: content }} />
     </div>
-  ) : null;
+  );
 };
 
 export { Announcement };

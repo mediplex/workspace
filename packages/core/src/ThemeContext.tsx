@@ -1,5 +1,5 @@
-import React from 'react'
-import { createContext, useState, ReactNode, useMemo } from 'react'
+import React from 'react';
+import { createContext, useState, ReactNode, useMemo } from 'react';
 import {
   Theme,
   responsiveFontSizes,
@@ -7,8 +7,8 @@ import {
   ThemeProvider,
   CssBaseline,
   ThemeOptions,
-} from '@material-ui/core'
-import { pink, grey, orange } from '@material-ui/core/colors'
+} from '@material-ui/core';
+import { pink, grey, orange } from '@material-ui/core/colors';
 
 const initialCustomThemeOptions: ThemeOptions = {
   // shape: {
@@ -37,19 +37,17 @@ const initialCustomThemeOptions: ThemeOptions = {
       fontSize: '0.75rem',
     },
   },
-}
+};
 
 const ThemeContext = createContext<{
-  isDarkModeEnabled: boolean
-  toogleDarkMode?: () => void
+  isDarkModeEnabled: boolean;
+  toogleDarkMode?: () => void;
 }>({
   isDarkModeEnabled: false,
-})
+});
 
 const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
-  const [customThemeOptions, setCustomThemeOption] = useState<ThemeOptions>(
-    initialCustomThemeOptions
-  )
+  const [customThemeOptions, setCustomThemeOption] = useState<ThemeOptions>(initialCustomThemeOptions);
 
   const toogleDarkMode = () =>
     setCustomThemeOption({
@@ -58,7 +56,7 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
         ...customThemeOptions.palette,
         type: customThemeOptions.palette?.type === 'light' ? 'dark' : 'light',
       },
-    })
+    });
 
   const customTheme: Theme = useMemo(() => {
     return responsiveFontSizes(
@@ -67,21 +65,15 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
         palette: {
           ...customThemeOptions.palette,
           primary: {
-            main:
-              customThemeOptions.palette?.type === 'light'
-                ? grey[900]
-                : grey[900],
+            main: customThemeOptions.palette?.type === 'light' ? grey[900] : grey[900],
           },
           secondary: {
-            main:
-              customThemeOptions.palette?.type === 'light'
-                ? orange[500]
-                : pink[500],
+            main: customThemeOptions.palette?.type === 'light' ? orange[500] : pink[500],
           },
         },
       })
-    )
-  }, [customThemeOptions])
+    );
+  }, [customThemeOptions]);
 
   return (
     <ThemeContext.Provider
@@ -95,7 +87,7 @@ const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
         {children}
       </ThemeProvider>
     </ThemeContext.Provider>
-  )
-}
+  );
+};
 
-export { ThemeContextProvider, ThemeContext }
+export { ThemeContextProvider, ThemeContext };
